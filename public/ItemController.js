@@ -1,5 +1,5 @@
 import Item from './Item.js';
-import { currentStage } from './Socket.js';
+import { getCurrentStage } from './Socket.js';
 import { getGameAssets } from './assets.js';
 
 class ItemController {
@@ -8,7 +8,7 @@ class ItemController {
 
   nextInterval = null;
   items = [];
-  stageId = currentStage;
+  stageId = 1000;
   stageItems = [];
 
   constructor(ctx, itemImages, scaleRatio, speed) {
@@ -50,6 +50,7 @@ class ItemController {
   }
 
   update(gameSpeed, deltaTime) {
+    const currentStage = getCurrentStage();
     if (this.stageId !== currentStage) {
       this.stageId = currentStage;
       const { itemUnlocks } = getGameAssets();
@@ -95,7 +96,7 @@ class ItemController {
   reset() {
     this.items = [];
     this.stageItems = [];
-    this.stageId = null;
+    this.stageId = 1000;
   }
 }
 

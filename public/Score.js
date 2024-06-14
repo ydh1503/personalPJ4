@@ -1,5 +1,5 @@
 import { getGameAssets } from './assets.js';
-import { currentStage, sendEvent } from './Socket.js';
+import { getCurrentStage, sendEvent } from './Socket.js';
 
 const getStage = (stageId, n = 0) => {
   const { stages } = getGameAssets();
@@ -24,12 +24,12 @@ class Score {
 
   update(deltaTime) {
     if (!this.stage || !this.nextStage) {
-      this.stage = getStage(currentStage);
-      this.nextStage = getStage(currentStage, 1);
+      this.stage = getStage(getCurrentStage());
+      this.nextStage = getStage(getCurrentStage(), 1);
     }
     if (!this.stageChange) {
-      this.stage = getStage(currentStage);
-      this.nextStage = getStage(currentStage, 1);
+      this.stage = getStage(getCurrentStage());
+      this.nextStage = getStage(getCurrentStage(), 1);
       this.stageChange = true;
     }
 
@@ -58,8 +58,8 @@ class Score {
   reset() {
     this.score = 0;
     this.stageChange = true;
-    this.stage = null;
-    this.nextStage = null;
+    this.stage = getStage(1000);
+    this.nextStage = getStage(1000, 1);
   }
 
   setHighScore() {

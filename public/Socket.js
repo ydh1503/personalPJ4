@@ -30,4 +30,8 @@ const sendEvent = (handlerId, payload) => {
   });
 };
 
-export { sendEvent, currentStage };
+const getCurrentStage = () => {
+  return currentStage;
+};
+
+export { sendEvent, getCurrentStage };
