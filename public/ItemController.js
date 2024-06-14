@@ -95,6 +95,7 @@ class ItemController {
   reset() {
     this.items = [];
     this.stageItems = [];
+    this.stageId = null;
   }
 }
 

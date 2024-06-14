@@ -58,6 +58,8 @@ class Score {
   reset() {
     this.score = 0;
     this.stageChange = true;
+    this.stage = null;
+    this.nextStage = null;
   }
 
   setHighScore() {

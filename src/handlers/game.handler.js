@@ -11,7 +11,7 @@ export const gameStart = (uuid, payload) => {
   setStage(uuid, stages.data[0].id, payload.timestamp);
   console.log('Stage: ', getStage(uuid));
 
-  return { status: 'success' };
+  return { status: 'success', currentStage: stages.data[0].id };
 };
 
 export const gameEnd = (uuid, payload) => {
